@@ -1,0 +1,14 @@
+[remap]
+
+importer="import_gif_to_animated_texture"
+type="AnimatedTexture"
+uid="uid://d2ylyt3dm3sq2"
+path="res://.godot/imported/skybox.gif-c96fa90e5fea9bdafbc6922d272b0888.tres"
+
+[deps]
+
+source_file="res://skybox.gif"
+dest_files=["res://.godot/imported/skybox.gif-c96fa90e5fea9bdafbc6922d272b0888.tres"]
+
+[params]
+

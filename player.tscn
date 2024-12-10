@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgn4jtslj8d2o"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_nkn6p"]
+[ext_resource type="PackedScene" uid="uid://dcfnqwx53qltw" path="res://animation.tscn" id="2_i2qji"]
+[ext_resource type="Shader" path="res://psx.gdshader" id="3_ycl6h"]
+[ext_resource type="Shader" path="res://addons/post_processing/shaders/pixelate.gdshader" id="4_flao6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bg6sk"]
+radius = 0.225896
+height = 0.96472
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yhrr"]
+render_priority = 0
+shader = ExtResource("3_ycl6h")
+shader_parameter/enable_fog = false
+shader_parameter/fog_color = Color(0.066, 0.1353, 0.22, 1)
+shader_parameter/noise_color = null
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = true
+shader_parameter/noise_time_fac = 2.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 24
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 0.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_wj37q"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tvs0"]
+shader = ExtResource("4_flao6")
+shader_parameter/pixelSize = 2
+
+[node name="Player" type="RigidBody3D"]
+script = ExtResource("1_nkn6p")
+
+[node name="AnimatedSprite3D" parent="." instance=ExtResource("2_i2qji")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.08, 0)
+billboard = 1
+alpha_cut = 3
+alpha_scissor_threshold = 0.1
+render_priority = 1
+autoplay = "idle"
+frame_progress = 0.930093
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bg6sk")
+
+[node name="TwistPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.843391, 0.5373, 0, -0.5373, 0.843391, 0, 1.2, 1)
+
+[node name="PitchPivot" type="Node3D" parent="TwistPivot"]
+
+[node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TwistPivot/PitchPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0260447, -0.826893)
+material_override = SubResource("ShaderMaterial_2yhrr")
+mesh = SubResource("QuadMesh_wj37q")
+
+[node name="Shaders" type="Control" parent="TwistPivot/PitchPivot/Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="TwistPivot/PitchPivot/Camera3D/Shaders"]
+
+[node name="ColorRect" type="ColorRect" parent="TwistPivot/PitchPivot/Camera3D/Shaders/CanvasLayer2"]
+material = SubResource("ShaderMaterial_2tvs0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="TwistPivot/PitchPivot/Camera3D/Shaders"]
+
+[node name="ColorRect2" type="ColorRect" parent="TwistPivot/PitchPivot/Camera3D/Shaders/CanvasLayer3"]
+material = SubResource("ShaderMaterial_2tvs0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
