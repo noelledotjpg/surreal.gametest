@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://d0oq6p3e8n8i7"]
+[gd_scene load_steps=22 format=3 uid="uid://d0oq6p3e8n8i7"]
 
 [ext_resource type="Texture2D" uid="uid://cp6vq7vt01wbd" path="res://addons/post_processing/shaders/073C.png" id="1_kk4gk"]
 [ext_resource type="PackedScene" uid="uid://cgn4jtslj8d2o" path="res://player.tscn" id="1_q8c38"]
 [ext_resource type="Shader" path="res://n64skybox.gdshader" id="2_hbq33"]
 [ext_resource type="Texture2D" uid="uid://d2ylyt3dm3sq2" path="res://skybox.gif" id="3_rfuce"]
 [ext_resource type="AudioStream" uid="uid://b4n55fgloqglt" path="res://surreal.mp3" id="4_dejt6"]
+[ext_resource type="PackedScene" uid="uid://dn1jwyeiksdbh" path="res://npctest.tscn" id="6_5eo2r"]
+[ext_resource type="Script" path="res://float.gd" id="7_cc5vp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_325n6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -122,3 +124,7 @@ volume_db = -5.0
 pitch_scale = 0.7
 autoplay = true
 playback_type = 1
+
+[node name="Sprite3D" parent="." instance=ExtResource("6_5eo2r")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10, 1, -7)
+script = ExtResource("7_cc5vp")

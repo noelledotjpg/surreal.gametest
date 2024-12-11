@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgn4jtslj8d2o"]
+[gd_scene load_steps=10 format=3 uid="uid://cgn4jtslj8d2o"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_nkn6p"]
 [ext_resource type="PackedScene" uid="uid://dcfnqwx53qltw" path="res://animation.tscn" id="2_i2qji"]
 [ext_resource type="Shader" path="res://psx.gdshader" id="3_ycl6h"]
-[ext_resource type="Shader" path="res://addons/post_processing/shaders/pixelate.gdshader" id="4_flao6"]
+[ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="4_uox7g"]
+[ext_resource type="Script" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="5_btxry"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bg6sk"]
 radius = 0.225896
 height = 0.96472
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2yhrr"]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("3_ycl6h")
 shader_parameter/enable_fog = false
 shader_parameter/fog_color = Color(0.066, 0.1353, 0.22, 1)
@@ -20,7 +21,7 @@ shader_parameter/fog_fade_range = 50.0
 shader_parameter/enable_noise = true
 shader_parameter/noise_time_fac = 2.0
 shader_parameter/enable_color_limitation = true
-shader_parameter/color_levels = 24
+shader_parameter/color_levels = 64
 shader_parameter/enable_dithering = true
 shader_parameter/dither_strength = 0.5
 
@@ -28,9 +29,78 @@ shader_parameter/dither_strength = 0.5
 flip_faces = true
 size = Vector2(2, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tvs0"]
-shader = ExtResource("4_flao6")
-shader_parameter/pixelSize = 2
+[sub_resource type="Resource" id="Resource_ac03t"]
+script = ExtResource("5_btxry")
+reload = false
+ASCII = false
+ASCIISize = Vector2(4, 9)
+ChromaticAberration = true
+StrenghtCA = 1.0
+Blur = false
+L_O_D = 1.0
+FishEye = false
+FishEyeAspect = 1.0
+FishEyeDistortion = 1.0
+FishEyeRadius = 1.0
+FishEyeAlpha = 1.0
+FishEyeCrop = 1.0
+FishEyeCropColor = Color(0, 0, 0, 1)
+Vignette = false
+VignetteIntensity = 0.4
+VignetteOpacity = 0.5
+VignetteR_G_B = Color(0, 0, 0, 1)
+Glitch = false
+GlitchRange = 0.05
+GlitchNoiseQuality = 250.0
+GlitchIntenity = 0.0088
+GlitchOffset = 0.03
+GlitchColorOffset = 1.3
+Outline = false
+OutlineColor = Color(0, 0, 0, 1)
+OutlineThreshold = 0.0
+OutlineBlend = 0.01
+Grain = false
+GrainPower = 75
+CircularWaves = false
+CircularWavesAmplitude = 2.0
+CircularWavesFrequency = 12.69
+CircularWavesRippleRate = 9.2
+SpeedLines = false
+SpeedLinesColor = Color(1, 1, 1, 1)
+SpeedLinesCount = 2
+SpeedLineDensity = 0.072
+SpeedLineSpeed = 20
+ColorCorrection = true
+ColorCorrectionTint = Color(1, 1, 1, 1)
+ColorCorrectionBrightness = 0.0
+ColorCorrectionSaturation = -0.128
+Palette = false
+Pixelate = false
+PixelatePixelSize = 8
+CRT = false
+overlay = false
+scanlines_opacity = 0.4
+scanlines_width = 0.25
+grille_opacity = 0.3
+pixelate = true
+roll_speed = 8.0
+roll_size = 15.0
+roll_variation = 1.8
+distort_intensity = 0.05
+noise_opacity = 0.4
+noise_speed = 5.0
+static_noise_intensity = 0.06
+aberration = 0.03
+brightness = 1.4
+discolor = true
+warp_amount = 1.0
+clip_warp = false
+vignette_intensity = 0.4
+vignette_opacity = 0.5
+AnalogMonitor = true
+AnalogMonitorResolution = Vector2(500, 500)
+ScreenShake = false
+ScreenShakePower = 0.1
 
 [node name="Player" type="RigidBody3D"]
 script = ExtResource("1_nkn6p")
@@ -60,28 +130,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0260447, -0.826893)
 material_override = SubResource("ShaderMaterial_2yhrr")
 mesh = SubResource("QuadMesh_wj37q")
 
-[node name="Shaders" type="Control" parent="TwistPivot/PitchPivot/Camera3D"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="TwistPivot/PitchPivot/Camera3D/Shaders"]
-
-[node name="ColorRect" type="ColorRect" parent="TwistPivot/PitchPivot/Camera3D/Shaders/CanvasLayer2"]
-material = SubResource("ShaderMaterial_2tvs0")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CanvasLayer3" type="CanvasLayer" parent="TwistPivot/PitchPivot/Camera3D/Shaders"]
-
-[node name="ColorRect2" type="ColorRect" parent="TwistPivot/PitchPivot/Camera3D/Shaders/CanvasLayer3"]
-material = SubResource("ShaderMaterial_2tvs0")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PostProcess" type="CanvasLayer" parent="TwistPivot/PitchPivot/Camera3D"]
+script = ExtResource("4_uox7g")
+configuration = SubResource("Resource_ac03t")
