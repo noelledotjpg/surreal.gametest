@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy02fdb77e812"]
+
+[ext_resource type="Material" uid="uid://bk1ywslt3khle" path="res://shadow/shadow_mat.tres" id="1"]
+
+[sub_resource type="PlaneMesh" id="1"]
+size = Vector2(1, 1)
+
+[node name="BoxShadow" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("1")

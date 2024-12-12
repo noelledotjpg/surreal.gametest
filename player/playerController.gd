@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
 @onready var sprite: AnimatedSprite3D = $Sprite
-var flip_speed : float = 17.0
+var flip_speed : float = 20.0
 var face_right : bool = false
 var face_up : bool = false
 
 var gravity : float = 1.0
 var speed : float = 5.0  # Movement speed
-var jump_force : float = 20.0  # Jump strength
+var jump_force : float = 14.0  # Jump strength
 
 func _physics_process(delta: float):
 	# Input for movement
