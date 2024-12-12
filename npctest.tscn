@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dpv0ds0cxb4ml" path="res://npctest.png" id="1_sybsj"]
 
 [node name="Sprite3D" type="Sprite3D"]
-billboard = 1
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 2
 alpha_cut = 2
 texture_filter = 0
 texture = ExtResource("1_sybsj")

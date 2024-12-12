@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpv0ds0cxb4ml"
-path="res://.godot/imported/npctest.png-2317ecb3f2d76d5475c43f6629031bfc.ctex"
+uid="uid://btcofixkau3lu"
+path="res://.godot/imported/shadeWalk.png-ddd1f23119bc2141ce8f6ee3a756b450.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://npctest.png"
-dest_files=["res://.godot/imported/npctest.png-2317ecb3f2d76d5475c43f6629031bfc.ctex"]
+source_file="res://player/sprites/shadeWalk.png"
+dest_files=["res://.godot/imported/shadeWalk.png-ddd1f23119bc2141ce8f6ee3a756b450.ctex"]
 
 [params]
 

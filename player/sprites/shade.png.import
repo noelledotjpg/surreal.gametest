@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpv0ds0cxb4ml"
-path="res://.godot/imported/npctest.png-2317ecb3f2d76d5475c43f6629031bfc.ctex"
+uid="uid://dh4qc82u4e4vo"
+path="res://.godot/imported/shade.png-0d7b6615a80c20de41450b30fabc5e61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://npctest.png"
-dest_files=["res://.godot/imported/npctest.png-2317ecb3f2d76d5475c43f6629031bfc.ctex"]
+source_file="res://player/sprites/shade.png"
+dest_files=["res://.godot/imported/shade.png-0d7b6615a80c20de41450b30fabc5e61.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

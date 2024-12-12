@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpv0ds0cxb4ml"
-path="res://.godot/imported/npctest.png-2317ecb3f2d76d5475c43f6629031bfc.ctex"
+uid="uid://dnue0cdv2bqln"
+path="res://.godot/imported/Portrait.png-d05a71320d1bbc7960d1ab2012e4ff00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://npctest.png"
-dest_files=["res://.godot/imported/npctest.png-2317ecb3f2d76d5475c43f6629031bfc.ctex"]
+source_file="res://addons/dialogue_nodes/icons/Portrait.png"
+dest_files=["res://.godot/imported/Portrait.png-d05a71320d1bbc7960d1ab2012e4ff00.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://c212g7aivja1l"]
+
+[ext_resource type="Script" path="res://player/playerController.gd" id="1_tvqru"]
+[ext_resource type="PackedScene" uid="uid://b05c0bsen2wtg" path="res://player/spritePlayer.tscn" id="2_27plt"]
+[ext_resource type="Shader" path="res://psx.gdshader" id="3_h228v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l1g17"]
+radius = 0.225896
+height = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tp816"]
+render_priority = -1
+shader = ExtResource("3_h228v")
+shader_parameter/enable_fog = false
+shader_parameter/fog_color = Color(0.066, 0.1353, 0.22, 1)
+shader_parameter/noise_color = null
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = true
+shader_parameter/noise_time_fac = 2.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 64
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 0.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_2v8wt"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_tvqru")
+
+[node name="Sprite" parent="." instance=ExtResource("2_27plt")]
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0218533, 0.110642, 0)
+shape = SubResource("CapsuleShape3D_l1g17")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.3, 3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0260447, -0.826893)
+material_override = SubResource("ShaderMaterial_tp816")
+mesh = SubResource("QuadMesh_2v8wt")

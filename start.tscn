@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://d0oq6p3e8n8i7"]
 
 [ext_resource type="Texture2D" uid="uid://cp6vq7vt01wbd" path="res://addons/post_processing/shaders/073C.png" id="1_kk4gk"]
-[ext_resource type="PackedScene" uid="uid://cgn4jtslj8d2o" path="res://player.tscn" id="1_q8c38"]
+[ext_resource type="PackedScene" uid="uid://c212g7aivja1l" path="res://player/Player.tscn" id="1_yjcbs"]
 [ext_resource type="Shader" path="res://n64skybox.gdshader" id="2_hbq33"]
 [ext_resource type="Texture2D" uid="uid://d2ylyt3dm3sq2" path="res://skybox.gif" id="3_rfuce"]
 [ext_resource type="AudioStream" uid="uid://b4n55fgloqglt" path="res://surreal.mp3" id="4_dejt6"]
@@ -65,6 +65,9 @@ flip_faces = true
 
 [node name="Node3D" type="Node3D"]
 
+[node name="Player" parent="." instance=ExtResource("1_yjcbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_88wca")
 
@@ -79,13 +82,6 @@ mesh = SubResource("PlaneMesh_mgj33")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dawir")
-
-[node name="Player" parent="." instance=ExtResource("1_q8c38")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-linear_damp = 3.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 3, 1, -2)
@@ -116,15 +112,15 @@ shape = SubResource("ConvexPolygonShape3D_stt7g")
 
 [node name="Sky" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_uass4")
 
 [node name="BG Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_dejt6")
 volume_db = -5.0
 pitch_scale = 0.7
-autoplay = true
 playback_type = 1
 
 [node name="Sprite3D" parent="." instance=ExtResource("6_5eo2r")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10, 1, -7)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2, 1, 0)
 script = ExtResource("7_cc5vp")

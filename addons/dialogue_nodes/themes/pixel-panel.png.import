@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpv0ds0cxb4ml"
-path="res://.godot/imported/npctest.png-2317ecb3f2d76d5475c43f6629031bfc.ctex"
+uid="uid://bke2a7c3lgttv"
+path="res://.godot/imported/pixel-panel.png-aa47cecf5a15baee2d50c902dc61992c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://npctest.png"
-dest_files=["res://.godot/imported/npctest.png-2317ecb3f2d76d5475c43f6629031bfc.ctex"]
+source_file="res://addons/dialogue_nodes/themes/pixel-panel.png"
+dest_files=["res://.godot/imported/pixel-panel.png-aa47cecf5a15baee2d50c902dc61992c.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
